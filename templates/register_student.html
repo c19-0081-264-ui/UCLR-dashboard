@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+</head>
+<body>
+    <div class="sign-in">
+        <div class="sign-in_content">
+            <div class="container register_container">
+                <h1>Register</h1>
+                
+                <form class="sign-in_form" method="POST" action="{{url_for('register')}}">
+                    <div class="form_layout">
+                        <label for="Surname">Surname</label>
+                        <input id="Surname" type="text" name="surname" placeholder="Enter Surname">
+                    </div>
+                    <div class="form_layout">
+                        <label for="Firstname">Firstname</label>
+                        <input id="Firstname" type="text" name="firstname" placeholder="Enter Firstname">
+                    </div>
+                    <div class="form_layout">
+                        <label for="Email">School Email </label>
+                        <input id="Email" type="email" name="email" readonly style="background-color: #f0f0f0;">
+                    </div>
+                    <div class="form_layout">
+                        <label for="Phone">Phone Number</label>
+                        <input id="Phone" type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" minlength="12" maxlength="12" >
+                    </div>
+                    <div class="form_layout">
+                        <label for="Address">Address</label>
+                        <input id="Address" type="text" placeholder="City/Province" name="address" required>
+                    </div>
+
+                    <div class="form_layout">
+                        <label for="Password">Password</label>
+                        <input id="Password" type="text" name="password" value="#school123" readonly style="background-color: #f0f0f0;">
+                    </div>
+                    <button class="btn primary" type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
