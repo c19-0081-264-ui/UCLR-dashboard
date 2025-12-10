@@ -75,3 +75,31 @@ def register():
 
 
     return render_template("register_student.html")
+    # ------------------------------------ HOME ------------------------------------
+@app.route('/home')
+def home():
+    if "loggedin" in session:
+        conn = get_db_connection()
+        cur = conn.cursor()
+
+        students = []
+        student_data = None
+
+        if "loggedin" in session and session.get("role") == 'admin':
+        
+            cur.execute("SELECT * FROM students WHERE role='student'")
+            students = cur.fetchall()
+            
+        elif session.get("role") == 'student':
+            cur.execute("SELECT * FROM students WHERE email=%s", (session['email'],))
+            student_data = cur.fetchone()
+
+        cur.close()
+        conn.close()
+    else:
+        return redirect(url_for('login'))
+    
+    return render_template("home.html", 
+                           students=students, student=student_data
+                           )
+    
