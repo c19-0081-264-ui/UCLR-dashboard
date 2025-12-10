@@ -151,3 +151,26 @@ def edit_student(id):
 
     return render_template('edit_information.html', student=student)
 
+# ------------------------------------ LOGOUT ------------------------------------
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
+
+@app.route('/delete/<int:id>')
+def delete_student(id):
+    if "loggedin" not in session or session.get("role") != "admin":
+        return redirect(url_for("login"))
+    
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("DELETE FROM students WHERE id=%s", (id,))
+    conn.commit()
+    cur.close()
+    conn.close()
+
+    return redirect(url_for('home'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
+    
