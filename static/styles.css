@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fff;
+    line-height: 1.7;
+    padding-top: 5rem;
+    
+}
+
+nav{
+    background: #333;
+    color: white;
+    padding: 1rem;
+    margin-bottom: 2rem 0;
+    width: 100vw;
+    height: 5rem;
+    position: fixed;
+    top: 0;
+    z-index: 11;   
+}
+
+.nav_container{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav a{ 
+    color: white; 
+    text-decoration: none; 
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+
+.table_header {
+    margin-bottom: 20px;
+}
+
+.table_header h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #000;
+    font-weight: 700;
+}
+
+/* Add Student Button */
+.table_header a {
+    display: inline-block;
+    background-color: #1e7e34; /* Dark Green */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.table_header a:hover {
+    background-color: #155724;
+}
+
+/* Table Styling */
+.table_wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+/* Table Head */
+thead th {
+    background-color: #cf2e8e; /* Magenta */
+    color: white;
+    padding: 15px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+}
+
+thead th:first-child {
+    border-top-left-radius: 8px;
+}
+
+thead th:last-child {
+    border-top-right-radius: 8px;
+}
+
+/* Table Body */
+tbody td {
+    padding: 15px;
+    color: #333;
+    vertical-align: middle;
+}
+
+/* Alternating Row Colors */
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #eacfe3; /* Light Pink/Purple */
+}
+
+/* Action Buttons */
+.action_btns {
+    display: flex;
+    gap: 10px;
+}
+
+.action_btns a {
+    padding: 6px 16px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+}
+
+/* Edit Button (Green) */
+.btn_edit {
+    background-color: #1e7e34;
+}
+.btn_edit:hover {
+    background-color: #155724;
+}
+
+/* Delete Button (Red) */
+.btn_delete {
+    background-color: #dc3545;
+}
+.btn_delete:hover {
+    background-color: #bb2d3b;
+}
+
+
+.login_container, .register_container {
+    max-width: 500px;
+    margin: 4rem auto;
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.login_container h1, .register_container h1 {
+    
+    margin-bottom: 2rem;
+    color: #000;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* Form Layout Wrapper */
+.form_layout {
+    margin-bottom: 1.2rem;
+}
+
+
+.form_layout label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: #000;
+    font-size: 0.95rem;
+}
+
+.form_layout input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    background-color: #fff;
+}
+
+.form_layout input:focus {
+    border-color: #333399;
+}
+
+
+.btn.primary {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: #333399; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s;
+}
+
+.btn.primary:hover {
+    background-color: #222277;
+}
+.register_container {
+    max-width: 600px;
+}
+.card h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.btn.secondary {
+    
+    padding: 0.9rem;
+    background-color: #53b66c; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s;
+}
+
+.btn.secondary:hover {
+    background-color: #4aa060;
+}
+
+
+.btn_logout {
+    display: block;
+    text-align: center;
+    width: 50%;
+    padding: 0.8rem;
+    margin: 1rem auto;
+    border: 2px solid #dc3545;
+    color: #dc3545;
+    background-color: transparent;
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+
+
+.btn_logout:hover {
+    background-color: #dc3545;
+    color: white;
+}
