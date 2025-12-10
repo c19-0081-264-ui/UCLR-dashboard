@@ -44,4 +44,34 @@ def login():
             msg = 'Incorrect username or password!'
 
     return render_template('login.html', msg=msg)
-    
+
+    # ------------------------------------ ADD STUDENT ------------------------------------
+@app.route('/register', methods=["GET", "POST"])
+def register():
+    if 'loggedin' not in session or session['role'] != 'admin':
+        return redirect(url_for('home'))
+
+    if request.method == "POST":
+        surname = request.form.get("surname", "").strip()
+        firstname = request.form.get("firstname", "").strip()
+        email = request.form.get("email", "").strip()
+        password = request.form.get("password")
+        phone = request.form.get("phone", "").strip()
+        address = request.form.get("address", "").strip()
+        school_id = email.split('@')[0]
+        role = 'student'
+        
+        if not phone:
+            phone = None
+
+        conn = get_db_connection()
+        cur = conn.cursor()
+
+        cur.execute("INSERT INTO students (school_id, surname, firstname, email, phone, address,password, role) VALUES(%s, %s, %s, %s, %s, %s, %s, %s)",(school_id, surname, firstname, email,  phone, address, password, role))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return redirect(url_for('home'))
+
+
+    return render_template("register_student.html")
