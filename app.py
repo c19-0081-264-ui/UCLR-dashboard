@@ -103,3 +103,51 @@ def home():
                            students=students, student=student_data
                            )
     
+    # ------------------------------------ EDIT ------------------------------------
+@app.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit_student(id):
+    if "loggedin" in session:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        if "loggedin" in session and session.get("role") == "admin":
+             if request.method == 'POST':
+                surname = request.form['surname']
+                firstname = request.form['firstname']
+                password = request.form['password']
+
+                cur.execute("""
+                    UPDATE students 
+                    SET surname = %s, firstname = %s, password = %s 
+                    WHERE id = %s
+                """, (surname, firstname, password, id))
+                conn.commit()
+                cur.close()
+                return redirect(url_for("home"))
+                
+        elif "loggedin" in session and session.get("role") == "student":
+            if request.method == 'POST':
+                address = request.form['address']
+                phone = request.form['phone']
+                password = request.form['password']
+
+                cur.execute("""
+                    UPDATE students 
+                    SET address = %s, phone = %s, password = %s 
+                    WHERE id = %s
+                """, (address, phone, password, id))
+                conn.commit()
+                cur.close()
+                return redirect(url_for("home"))
+           
+            
+
+        cur.execute("SELECT * FROM students WHERE id = %s", (id,))
+        student = cur.fetchone()
+        cur.close()
+        conn.close()
+
+    else:
+        return redirect(url_for('login'))
+
+    return render_template('edit_information.html', student=student)
+
