@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container login_container">
+        <h1>Login</h1>
+        <form class="sign-in_form" method="POST" action="{{url_for('login')}}">
+            <div class="form_layout">
+                <label for="Email">Email</label>
+                <input id="Email" type="email" name="email" placeholder="Enter School Email" required>
+            </div>
+            <div class="form_layout">
+                <label for="Password">Password</label>
+                <input id="Password" type="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <button class="btn primary" type="submit">Log In</button>
+        </form>
+    </div>
+</body>
+</html>
